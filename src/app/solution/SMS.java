@@ -1,4 +1,4 @@
-package app;
+package app.solution;
 
 import app.framework.Dispatcher;
 

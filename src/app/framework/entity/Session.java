@@ -1,4 +1,4 @@
-package app.entity;
+package app.framework.entity;
 
 import javax.persistence.*;
 

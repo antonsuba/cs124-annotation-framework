@@ -1,4 +1,4 @@
-package app.solution;
+package app.solution.handlers;
 
 
 public class RegisterHandler {
