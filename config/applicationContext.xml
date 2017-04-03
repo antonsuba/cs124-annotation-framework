@@ -91,7 +91,7 @@
     </bean>
 
     <!-- SPRING DATA JPA REPOSITORY SUPPORT -->
-    <jpa:repositories base-package="app.repositories" />
+    <jpa:repositories base-package="framework.repositories" />
 
     <!-- CONFIGURE TRANSACTION MANAGEMENT -->
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">

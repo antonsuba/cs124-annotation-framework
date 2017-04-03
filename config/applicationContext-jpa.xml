@@ -11,6 +11,6 @@
   			 					 http://www.springframework.org/schema/data/jpa
   			 					 http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-  <repositories base-package="app.repositories" />
+  <repositories base-package="framework.repositories" />
 
 </beans:beans>

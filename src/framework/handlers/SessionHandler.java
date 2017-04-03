@@ -1,4 +1,4 @@
-package app.framework.handlers;
+package framework.handlers;
 
 public class SessionHandler {
 

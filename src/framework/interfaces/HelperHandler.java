@@ -1,4 +1,4 @@
-package app.framework.interfaces;
+package framework.interfaces;
 
 public interface HelperHandler {
     void process();

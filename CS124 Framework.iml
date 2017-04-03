@@ -127,5 +127,14 @@
         <jarDirectory url="file://$USER_HOME$/Documents/School/[3] Junior Year/[2] 2nd Sem/CS124/Samples/[3] WebDependenciesWithRest/lib/mysql" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/fast-classpath-scanner-2.0.11.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
