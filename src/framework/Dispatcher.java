@@ -105,6 +105,7 @@ public class Dispatcher {
         for(HelperHandler handler : helperArray){
             boolean result = handler.process(command, args);
             if(!result){
+                System.out.println(handler.getClass().getAnnotation(HelperAnnotation.class).errorMessage());
                 return false;
             }
         }

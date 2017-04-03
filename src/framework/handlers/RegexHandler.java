@@ -3,7 +3,7 @@ package framework.handlers;
 import framework.annotations.HelperAnnotation;
 import framework.interfaces.HelperHandler;
 
-@HelperAnnotation()
+@HelperAnnotation(errorMessage = "Error. Commands must not have numbers and special characters")
 public class RegexHandler implements HelperHandler{
 
     @Override
