@@ -1,5 +1,5 @@
 package framework.interfaces;
 
 public interface SMSHandler {
-    void process();
+    void process(String command, String[] args);
 }
