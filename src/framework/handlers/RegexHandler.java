@@ -1,14 +1,16 @@
 package framework.handlers;
 
 import framework.annotations.HelperAnnotation;
-import framework.annotations.Regex;
 import framework.interfaces.HelperHandler;
 
-@HelperAnnotation(target = Regex.class)
+@HelperAnnotation()
 public class RegexHandler implements HelperHandler{
 
     @Override
-    public void process() {
+    public boolean process(String command, String[] args) {
+        Boolean valid = false;
+        String formattedCommand = command;
 
+        return valid;
     }
 }

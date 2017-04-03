@@ -7,13 +7,14 @@ import framework.interfaces.SMSHandler;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class Dispatcher {
 
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
-    private HashMap<Class, HelperHandler> helperMap =  new HashMap<>();
+    private ArrayList<HelperHandler> helperArray =  new ArrayList<>();
 
     public Dispatcher(){
         //Scan for SMS Handlers
@@ -37,17 +38,50 @@ public class Dispatcher {
         for(String helperHandler : scannedClasses){
             try {
                 Class c = Class.forName(helperHandler);
-                HelperAnnotation helperAnnotation = (HelperAnnotation) c.getAnnotation(HelperAnnotation.class);
-                helperMap.put(helperAnnotation.target(), (HelperHandler) c.newInstance());
+                //HelperAnnotation helperAnnotation = (HelperAnnotation) c.getAnnotation(HelperAnnotation.class);
+                helperArray.add((HelperHandler) c.newInstance());
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void dispatch(String command){
-        SMSHandler smsHandler = smsMap.get(command);
+//    private Object attachValidator(Object o){
+//        Class<?> type = o.getClass();
+//        ClassLoader classLoader = type.getClassLoader();
+//
+//        Class<?> byteBuddy = new ByteBuddy().subclass(type)
+//                .method(ElementMatchers.isAnnotatedWith(Validate.class))
+//                .intercept(MethodDelegation.to(CommandInterceptor.class))
+//                .make().load(classLoader).getLoaded();
+//
+//        Object proxy = null;
+//        try {
+//            proxy = byteBuddy.newInstance();
+//        } catch (InstantiationException | IllegalAccessException e) {
+//            e.printStackTrace();
+//        }
+//        return proxy;
+//    }
+//
+//    static class CommandInterceptor{
+//
+//        @RuntimeType
+//        public static Object intercept(@Origin Method method,
+//                                       @AllArguments Object[] args,
+//                                       @SuperCall Callable<?> callable,
+//                                       @Super Object superClass)
+//                throws Exception {
+//
+//            Object o = callable.call();
+//
+//
+//
+//            return o;
+//        }
+//    }
 
+    public void dispatch(String command){
         String[] components = command.split("\\s");
         String[] args = new String[]{};
         if(components.length - 1 > 0){
@@ -55,8 +89,25 @@ public class Dispatcher {
             System.arraycopy(components, 1, args, 1, args.length - 1);
         }
 
+        if(validate(components[0], args)){
+            return;
+        }
+
+        SMSHandler smsHandler = smsMap.get(components[0]);
+
         if(smsHandler != null){
             smsHandler.process(components[0], args);
         }
+    }
+
+    private boolean validate(String command, String[] args){
+
+        for(HelperHandler handler : helperArray){
+            boolean result = handler.process(command, args);
+            if(!result){
+                return false;
+            }
+        }
+        return true;
     }
 }
