@@ -49,8 +49,11 @@ public class Dispatcher {
         SMSHandler smsHandler = smsMap.get(command);
 
         String[] components = command.split("\\s");
-        String[] args = new String[components.length - 1];
-        System.arraycopy(components, 1, args, 1, args.length - 1);
+        String[] args = new String[]{};
+        if(components.length - 1 > 0){
+            args = new String[components.length - 1];
+            System.arraycopy(components, 1, args, 1, args.length - 1);
+        }
 
         if(smsHandler != null){
             smsHandler.process(components[0], args);
