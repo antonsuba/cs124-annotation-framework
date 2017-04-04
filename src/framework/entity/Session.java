@@ -17,14 +17,14 @@ public class Session {
     private String name;
     
     @Column
-    private int room;
+    private String room;
     
     public int getGameState(){
     	return gameState;
     }
     
     public void setGameState(int gameState){
-		this.gameState = gameState;
+		this.gameState += gameState;
 	}
     
     
@@ -36,11 +36,11 @@ public class Session {
 		this.name = name;
 	}
     
-    public int getRoom(){
+    public String getRoom(){
     	return room;
     }
     
-    public void setRoom(int room){
+    public void setRoom(String room){
 		this.room = room;
 	}
     

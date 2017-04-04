@@ -5,13 +5,17 @@ import framework.entity.Session;
 import framework.interfaces.SMSHandler;
 import room.RoomCommandManager;
 
-@SMSAnnotation(trigger = "COMMAND")
+import java.util.HashMap;
+
+@SMSAnnotation(trigger = "COMMAND", argumentCount = -1)
 public class CommandHandler implements SMSHandler{
 
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
-		// TODO Auto-generated method stub
-		
+		HashMap<String, Object> results = rcm.processRoom(session.getRoom(), session.getGameState(), command);
+
+		session.setGameState((Integer)results.get("status"));
+		System.out.println(results.get("message"));
 	}
 
 }
