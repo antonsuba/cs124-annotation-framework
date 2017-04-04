@@ -11,6 +11,7 @@ public class HintHandler implements SMSHandler{
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
 		// TODO Auto-generated method stub
+		System.out.println("HINT");
 		
 	}
 

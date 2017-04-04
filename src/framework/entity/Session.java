@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Session {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column
     private Long id;
 

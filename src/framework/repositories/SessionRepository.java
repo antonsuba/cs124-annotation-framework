@@ -10,7 +10,7 @@ import framework.entity.Session;
 @Repository
 public interface SessionRepository extends JpaRepository<Session, Long>{
 	
-	@Query("select s from Session where name = :playerName")
+	@Query("select s from session where name = :playerName")
 	public Session getSession(@Param("playerName")String playerName);
 	
 }
