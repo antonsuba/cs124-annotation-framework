@@ -9,7 +9,10 @@ import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Dispatcher {
 
@@ -70,8 +73,7 @@ public class Dispatcher {
         if(!validate(components[0], args)){
             return;
         }
-        
-        System.out.println(Arrays.toString(components));
+
         SMSHandler smsHandler = smsMap.get(components[0].toUpperCase());
 
         if(smsHandler == null){
@@ -80,7 +82,6 @@ public class Dispatcher {
 //        smsHandler.process(components[0], args, rcm, session);
 
         smsHandler.process(components[0], args, rcm, sessionHandler);
-        
     }
 
     private boolean validate(String command, String[] args){

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import framework.annotations.SMSAnnotation;
 import framework.entity.Session;
+import framework.handlers.SessionHandler;
 import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
 import room.RoomCommandManager;
@@ -20,7 +21,7 @@ public class RegisterHandler implements SMSHandler{
 	
     @Override
     @PostConstruct
-    public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
+    public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler session) {
     	
     	System.out.println(args[0]);
     	
@@ -28,17 +29,17 @@ public class RegisterHandler implements SMSHandler{
 //    	Session checkSession = rep.getSession(session.getName());
 //    	System.out.println(checkSession);
     	
-    	if(session.getName() != null){
-    		session = rep.getSession(session.getName());
-    	} else{
-    		Session newSession = new Session();
-    		newSession.setName(args[0]);
-    		newSession.setGameState(0);
-    		newSession.setRoom("Room1");
-    		session = newSession;
-    		System.out.println(rep);
-//    		rep.save(session);
-    	}
+//    	if(session.getName() != null){
+//    		session = rep.getSession(session.getName());
+//    	} else{
+//    		Session newSession = new Session();
+//    		newSession.setName(args[0]);
+//    		newSession.setGameState(0);
+//    		newSession.setRoom("Room1");
+//    		session = newSession;
+//    		System.out.println(rep);
+////    		rep.save(session);
+//    	}
     	
     }
 }

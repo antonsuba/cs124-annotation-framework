@@ -11,13 +11,12 @@ import room.RoomCommandManager;
 
 import java.util.HashMap;
 
+@Component
 @SMSAnnotation(trigger = "START")
 public class StartHandler implements SMSHandler{
 	
 	@Autowired
 	SessionRepository rep;
-	
-	Session currentSession = new Session();
 
 	
 //	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
@@ -30,8 +29,9 @@ public class StartHandler implements SMSHandler{
 //		String name = session.getName();
 //		session = rep.getSession(name);
 //	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
-	
+	//@PostConstruct
 	@Override
+//	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
 		Session session = sessionHandler.getSession();
 		//String name = session.getName();
