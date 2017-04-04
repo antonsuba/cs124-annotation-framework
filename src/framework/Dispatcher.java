@@ -78,11 +78,6 @@ public class Dispatcher {
         if(smsHandler == null){
             smsHandler = smsMap.get("COMMAND");
         }
-        
-        for(int i = 0; i < args.length; i++){
-        	System.out.println(args.length);
-        	System.out.println(args[i]);
-        }
         smsHandler.process(components[0], args, rcm, session);
     }
 
