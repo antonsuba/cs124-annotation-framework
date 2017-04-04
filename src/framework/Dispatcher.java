@@ -46,41 +46,6 @@ public class Dispatcher {
         }
     }
 
-//    private Object attachValidator(Object o){
-//        Class<?> type = o.getClass();
-//        ClassLoader classLoader = type.getClassLoader();
-//
-//        Class<?> byteBuddy = new ByteBuddy().subclass(type)
-//                .method(ElementMatchers.isAnnotatedWith(Validate.class))
-//                .intercept(MethodDelegation.to(CommandInterceptor.class))
-//                .make().load(classLoader).getLoaded();
-//
-//        Object proxy = null;
-//        try {
-//            proxy = byteBuddy.newInstance();
-//        } catch (InstantiationException | IllegalAccessException e) {
-//            e.printStackTrace();
-//        }
-//        return proxy;
-//    }
-//
-//    static class CommandInterceptor{
-//
-//        @RuntimeType
-//        public static Object intercept(@Origin Method method,
-//                                       @AllArguments Object[] args,
-//                                       @SuperCall Callable<?> callable,
-//                                       @Super Object superClass)
-//                throws Exception {
-//
-//            Object o = callable.call();
-//
-//
-//
-//            return o;
-//        }
-//    }
-
     public void dispatch(String command){
         String[] components = command.split("\\s");
         String[] args = new String[]{};
@@ -89,7 +54,7 @@ public class Dispatcher {
             System.arraycopy(components, 1, args, 1, args.length - 1);
         }
 
-        if(validate(components[0], args)){
+        if(!validate(components[0], args)){
             return;
         }
 

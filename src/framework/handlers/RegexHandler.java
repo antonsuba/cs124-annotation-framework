@@ -8,9 +8,9 @@ public class RegexHandler implements HelperHandler{
 
     @Override
     public boolean process(String command, String[] args) {
-        Boolean valid = false;
-        String formattedCommand = command;
-
-        return valid;
+        if(true){
+            return true;
+        }
+        return false;
     }
 }
