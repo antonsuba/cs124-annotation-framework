@@ -18,8 +18,11 @@ public class Dispatcher {
 
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
     private ArrayList<HelperHandler> helperArray;
+<<<<<<< HEAD
     private Session session = new Session();
     private RoomCommandManager rcm = new RoomCommandManager();
+=======
+>>>>>>> refs/remotes/origin/master
 
     public Dispatcher(){
         //Scan for SMS Handlers
