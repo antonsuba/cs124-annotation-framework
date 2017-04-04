@@ -10,6 +10,7 @@ public class RegexHandler implements HelperHandler{
 
     @Override
     public boolean process(String command, String[] args) {
-        return command.matches("/^[A-Za-z]+$/") && Arrays.toString(args).matches("/^[A-Za-z]+$/");
+        //return command.matches("/^[A-Za-z]+$/") && Arrays.toString(args).matches("/^[A-Za-z]+$/");
+    	return true;
     }
 }

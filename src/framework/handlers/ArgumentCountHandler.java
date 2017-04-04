@@ -12,6 +12,7 @@ import java.util.List;
 public class ArgumentCountHandler implements HelperHandler {
     @Override
     public boolean process(String command, String[] args) {
+
         ScanResult smsResults = new FastClasspathScanner("solution.handlers").scan();
         List<String> smsScannedClasses = smsResults.getNamesOfClassesWithAnnotation(SMSAnnotation.class);
 

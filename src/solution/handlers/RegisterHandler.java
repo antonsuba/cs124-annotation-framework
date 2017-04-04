@@ -11,5 +11,6 @@ public class RegisterHandler implements SMSHandler{
     @Override
     public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
     	session.setName(args[0]);
+    	System.out.println(args[0]);
     }
 }

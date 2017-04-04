@@ -9,15 +9,13 @@ import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Dispatcher {
 
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
     private ArrayList<HelperHandler> helperArray;
+
     private Session session = new Session();
     private RoomCommandManager rcm = new RoomCommandManager();
 
@@ -65,18 +63,27 @@ public class Dispatcher {
         String[] args = new String[]{};
         if(components.length - 1 > 0){
             args = new String[components.length - 1];
-            System.arraycopy(components, 1, args, 1, args.length - 1);
+            System.arraycopy(components, 1, args, 0, args.length);
         }
 
         if(!validate(components[0], args)){
             return;
         }
 
+        System.out.println(Arrays.toString(components));
+        System.out.println(args.length);
+
         SMSHandler smsHandler = smsMap.get(components[0]);
 
-        if(smsHandler != null){
-            smsHandler.process(components[0], args, rcm, session);
+        if(smsHandler == null){
+            smsHandler = smsMap.get("COMMAND");
         }
+        
+        for(int i = 0; i < args.length; i++){
+        	System.out.println(args.length);
+        	System.out.println(args[i]);
+        }
+        smsHandler.process(components[0], args, rcm, session);
     }
 
     private boolean validate(String command, String[] args){
