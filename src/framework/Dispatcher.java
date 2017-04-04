@@ -2,7 +2,7 @@ package framework;
 
 import framework.annotations.HelperAnnotation;
 import framework.annotations.SMSAnnotation;
-import framework.entity.Session;
+import framework.handlers.SessionHandler;
 import framework.interfaces.HelperHandler;
 import framework.interfaces.SMSHandler;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
@@ -19,7 +19,8 @@ public class Dispatcher {
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
     private ArrayList<HelperHandler> helperArray;
 
-    private Session session = new Session();
+    //private Session session = new Session();
+    private SessionHandler sessionHandler = new SessionHandler();
     private RoomCommandManager rcm = new RoomCommandManager();
 
     public Dispatcher(){
@@ -73,15 +74,14 @@ public class Dispatcher {
             return;
         }
 
-//        System.out.println(Arrays.toString(components));
-//        System.out.println(args.length);
-
         SMSHandler smsHandler = smsMap.get(components[0].toUpperCase());
 
         if(smsHandler == null){
             smsHandler = smsMap.get("COMMAND");
         }
-        smsHandler.process(components[0], args, rcm, session);
+//        smsHandler.process(components[0], args, rcm, session);
+
+        smsHandler.process(components[0], args, rcm, sessionHandler);
     }
 
     private boolean validate(String command, String[] args){

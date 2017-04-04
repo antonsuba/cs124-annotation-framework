@@ -2,6 +2,7 @@ package solution.handlers;
 
 import framework.annotations.SMSAnnotation;
 import framework.entity.Session;
+import framework.handlers.SessionHandler;
 import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,16 @@ public class StartHandler implements SMSHandler{
 	
 	@Autowired
 	SessionRepository rep;
-	
-	Session currentSession = new Session();
 
 	//@PostConstruct
 	@Override
-	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
-		String name = session.getName();
+//	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
+	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
+		Session session = sessionHandler.getSession();
+		//String name = session.getName();
 		//session = rep.getSession(name);
 
+		//Reset room and game state
 		session.setRoom("Room1");
 		session.setGameState(0);
 
