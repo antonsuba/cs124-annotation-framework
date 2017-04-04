@@ -12,13 +12,8 @@ import java.util.Arrays;
 public class GoHandler implements SMSHandler {
 	
     @Override
-<<<<<<< HEAD
-    public void process(String commands, String[] args, RoomCommandManager rcm, SessionHandler session){
-=======
-    //public void process(String commands, String[] args, RoomCommandManager rcm, Session session){
     public void process(String commands, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler){
         Session session = sessionHandler.getSession();
->>>>>>> refs/remotes/origin/master
         System.out.println(commands);
         System.out.println(Arrays.toString(args));
 //        session.setRoom(args[0]);
