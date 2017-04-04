@@ -9,5 +9,5 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SMSAnnotation {
     String trigger();
-    int parameterCount() default 0;
+    int argumentCount() default 0;
 }

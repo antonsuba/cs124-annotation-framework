@@ -10,13 +10,14 @@ import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class Dispatcher {
 
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
-    private ArrayList<HelperHandler> helperArray =  new ArrayList<>();
+    private ArrayList<HelperHandler> helperArray;
     private Session session = new Session();
     private RoomCommandManager rcm = new RoomCommandManager();
 
@@ -39,11 +40,20 @@ public class Dispatcher {
         ScanResult helperResults = new FastClasspathScanner("framework.handlers").scan();
         List<String> scannedClasses = helperResults.getNamesOfClassesWithAnnotation(HelperAnnotation.class);
 
+        helperArray = new ArrayList<>(Collections.nCopies(scannedClasses.size(), null));
+
         for(String helperHandler : scannedClasses){
             try {
                 Class c = Class.forName(helperHandler);
-                //HelperAnnotation helperAnnotation = (HelperAnnotation) c.getAnnotation(HelperAnnotation.class);
-                helperArray.add((HelperHandler) c.newInstance());
+                HelperHandler handler = (HelperHandler) c.newInstance();
+
+                int index = handler.getClass().getAnnotation(HelperAnnotation.class).index();
+                if(index == -1){
+                    helperArray.add(handler);
+                }
+                else{
+                    helperArray.set(index, handler);
+                }
             } catch (ClassNotFoundException | IllegalAccessException | InstantiationException e) {
                 e.printStackTrace();
             }
