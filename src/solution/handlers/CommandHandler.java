@@ -28,5 +28,4 @@ public class CommandHandler implements SMSHandler{
 		session.setGameState((Integer)results.get("status"));
 		System.out.println(results.get("message"));
 	}
-
 }
