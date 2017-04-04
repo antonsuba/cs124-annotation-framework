@@ -18,6 +18,7 @@ public class Dispatcher {
 
     private HashMap<String, SMSHandler> smsMap = new HashMap<>();
     private ArrayList<HelperHandler> helperArray;
+
     private Session session = new Session();
     private RoomCommandManager rcm = new RoomCommandManager();
 
@@ -74,9 +75,10 @@ public class Dispatcher {
 
         SMSHandler smsHandler = smsMap.get(components[0]);
 
-        if(smsHandler != null){
-            smsHandler.process(components[0], args, rcm, session);
+        if(smsHandler == null){
+            smsHandler = smsMap.get("COMMAND");
         }
+        smsHandler.process(components[0], args, rcm, session);
     }
 
     private boolean validate(String command, String[] args){
