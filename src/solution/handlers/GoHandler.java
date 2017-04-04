@@ -5,7 +5,7 @@ import framework.interfaces.SMSHandler;
 
 import java.util.Arrays;
 
-@SMSAnnotation(trigger = "GO", parameterCount = 1)
+@SMSAnnotation(trigger = "GO", argumentCount = 1)
 public class GoHandler implements SMSHandler {
     @Override
     public void process(String commands, String[] args){
