@@ -3,8 +3,6 @@ package framework.handlers;
 import framework.annotations.HelperAnnotation;
 import framework.interfaces.HelperHandler;
 
-import java.util.Arrays;
-
 @HelperAnnotation(index = 0, errorMessage = "Error. Commands must not have numbers and special characters")
 public class RegexHandler implements HelperHandler{
 

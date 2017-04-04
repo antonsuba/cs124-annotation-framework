@@ -14,7 +14,6 @@ public class GoHandler implements SMSHandler {
     public void process(String commands, String[] args, RoomCommandManager rcm, Session session){
         System.out.println(commands);
         System.out.println(Arrays.toString(args));
-        
-        session.setRoom(Integer.valueOf(args[0]));
+        session.setRoom(args[0]);
     }
 }
