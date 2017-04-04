@@ -8,7 +8,7 @@ import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 
 import java.util.List;
 
-@HelperAnnotation(errorMessage = "Error. Not enough arguments")
+@HelperAnnotation(index = 1, errorMessage = "Error. Not enough arguments")
 public class ArgumentCountHandler implements HelperHandler {
     @Override
     public boolean process(String command, String[] args) {
