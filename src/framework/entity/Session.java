@@ -11,5 +11,39 @@ public class Session {
     private Long id;
 
     @Column
+    private int gameState;
+    
+    @Column
     private String name;
+    
+    @Column
+    private int room;
+    
+    public int getGameState(){
+    	return gameState;
+    }
+    
+    public void setGameState(int gameState){
+		this.gameState = gameState;
+	}
+    
+    
+    public String getName(){
+    	return name;
+    }
+    
+    public void setName(String name){
+		this.name = name;
+	}
+    
+    public int getRoom(){
+    	return room;
+    }
+    
+    public void setRoom(int room){
+		this.room = room;
+	}
+    
+    
+    
 }
