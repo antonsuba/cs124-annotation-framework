@@ -1,8 +1,5 @@
 package solution.handlers;
 
-import java.lang.reflect.Method;
-import java.util.List;
-
 import framework.annotations.SMSAnnotation;
 import framework.entity.Session;
 import framework.handlers.SessionHandler;
@@ -11,12 +8,19 @@ import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
 
+import java.lang.reflect.Method;
+import java.util.List;
+
 @SMSAnnotation(trigger = "HINT")
 public class HintHandler implements SMSHandler{
 
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
-		// TODO Auto-generated method stub
+		if(!sessionHandler.isInARoom()){
+			System.out.println("Error. Please GO in a room first");
+			return;
+		}
+
 		System.out.println("Here is a list of things you can do: ");
 		System.out.println("(although some of these may only be called depending on your state)");
 		Session session = sessionHandler.getSession();

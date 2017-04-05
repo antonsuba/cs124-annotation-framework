@@ -20,6 +20,11 @@ public class StartHandler implements SMSHandler{
 	
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
+		if(!sessionHandler.isRegistered()){
+			System.out.println("Error. Please REGISTER first");
+			return;
+		}
+
 		Session session = sessionHandler.getSession();
 
 		//Reset room and game state
@@ -31,5 +36,7 @@ public class StartHandler implements SMSHandler{
 		rep.saveAndFlush(session);
 		
 		System.out.println(results.get("message"));
+
+		sessionHandler.setStarted(true);
 	}
 }

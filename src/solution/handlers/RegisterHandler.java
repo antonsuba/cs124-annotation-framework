@@ -26,6 +26,8 @@ public class RegisterHandler implements SMSHandler{
     		
     		System.out.println("Welcome back " + args[0] + ", you may continue your journey in DragonSMS");
 			System.out.println("You are currently in " + checkSession.getRoom());
+			sessionHandler.setStarted(true);
+			sessionHandler.setInARoom(true);
 		} else{
     		Session newSession = new Session();
     		newSession.setName(args[0]);
@@ -36,6 +38,7 @@ public class RegisterHandler implements SMSHandler{
     		
     		System.out.println("Hello " + args[0] + ", welcome to DragonSMS");
     	}
-    	
+
+    	sessionHandler.setRegistered(true);
     }
 }

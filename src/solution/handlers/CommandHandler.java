@@ -20,6 +20,11 @@ public class CommandHandler implements SMSHandler{
 	
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
+		if(!sessionHandler.isRegistered() || !sessionHandler.isStarted()){
+			System.out.println("Error. Please use the REGISTER or START command first");
+			return;
+		}
+
 		Session session = sessionHandler.getSession();
 		HashMap<String, Object> results;
 
@@ -35,7 +40,6 @@ public class CommandHandler implements SMSHandler{
 		}
 
 		session.setGameState((Integer)results.get("status"));
-		System.out.println(session.getGameState());
 		rep.saveAndFlush(session);
 		
 		System.out.println(results.get("message"));
