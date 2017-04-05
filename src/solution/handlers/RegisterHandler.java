@@ -32,7 +32,8 @@ public class RegisterHandler implements SMSHandler{
     		sessionHandler.setSession(checkSession);
     		
     		System.out.println("Welcome back " + args[0] + ", you may continue your journey in DragonSMS");
-    	} else{
+			System.out.println("You are currently in " + checkSession.getRoom());
+		} else{
     		Session newSession = new Session();
     		newSession.setName(args[0]);
     		newSession.setGameState(0);

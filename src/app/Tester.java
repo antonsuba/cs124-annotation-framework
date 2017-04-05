@@ -17,7 +17,7 @@ public class Tester {
     	AbstractApplicationContext ctx;
     	
         // load application context files
-        ctx = new ClassPathXmlApplicationContext(new String []{"applicationContext.xml", "applicationContext-jpa.xml"});
+        ctx = new ClassPathXmlApplicationContext("applicationContext.xml", "applicationContext-jpa.xml");
     	SessionRepository sr = (SessionRepository)ctx.getBean("sessionRepository");
     	RegisterHandler.rep = sr;
     	StartHandler.rep = sr;
