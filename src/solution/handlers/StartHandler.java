@@ -28,10 +28,11 @@ public class StartHandler implements SMSHandler{
 		//Reset room and game state
 		session.setRoom("Room1");
 		session.setGameState(0);
-		rep.saveAndFlush(session);
 		
 		HashMap<String, Object> results = rcm.processRoom(session.getRoom(), session.getGameState(), "checkRoom");
 		session.setGameState((Integer)results.get("status"));
+		rep.saveAndFlush(session);
+		
 		System.out.println(results.get("message"));
 	}
 	

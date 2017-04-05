@@ -27,7 +27,6 @@ public class RegisterHandler implements SMSHandler{
 
         //Create new session and save to DB
 		Session checkSession = rep.getSession(args[0]);
-//		System.out.println(rep.getSession(args[0]));
     	
     	if(checkSession != null){
     		sessionHandler.setSession(checkSession);

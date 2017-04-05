@@ -7,6 +7,7 @@ import framework.entity.Session;
 import framework.repositories.SessionRepository;
 import solution.SMS;
 import solution.handlers.CommandHandler;
+import solution.handlers.GoHandler;
 import solution.handlers.RegisterHandler;
 import solution.handlers.StartHandler;
 
@@ -21,6 +22,7 @@ public class Tester {
     	RegisterHandler.rep = sr;
     	StartHandler.rep = sr;
     	CommandHandler.rep = sr;
+    	GoHandler.rep = sr;
     	
         SMS sms = new SMS();
     }
