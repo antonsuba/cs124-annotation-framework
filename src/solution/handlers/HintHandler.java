@@ -18,6 +18,7 @@ public class HintHandler implements SMSHandler{
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
 		// TODO Auto-generated method stub
 		System.out.println("Here is a list of things you can do: ");
+		System.out.println("(although some of these may only be called depending on your state)");
 		Session session = sessionHandler.getSession();
 		
 		ScanResult roomResult = new FastClasspathScanner("room."+session.getRoom()).scan();

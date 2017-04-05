@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 @SMSAnnotation(trigger = "COMMAND", argumentCount = -1)
 public class CommandHandler implements SMSHandler{
+	
 	@Autowired
 	public static SessionRepository rep;
 	
@@ -24,11 +25,9 @@ public class CommandHandler implements SMSHandler{
 		Session session = sessionHandler.getSession();
 		HashMap<String, Object> results;
 
-		String arguments = "";
-		for(int i = 0; i < args.length; i++){
-			arguments = arguments + args[i];
-		}
-	
+		String arguments = " ";
+		for (String arg : args) arguments += arg;
+
 		try{
 			results = rcm.processRoom(session.getRoom(), session.getGameState(), command + arguments);
 		}
@@ -38,6 +37,9 @@ public class CommandHandler implements SMSHandler{
 		}
 
 		session.setGameState((Integer)results.get("status"));
+		System.out.println(session.getGameState());
+		rep.saveAndFlush(session);
+		
 		System.out.println(results.get("message"));
 	}
 }
