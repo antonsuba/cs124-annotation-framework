@@ -7,7 +7,6 @@ import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
 import room.RoomCommandManager;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -32,6 +32,4 @@ public class StartHandler implements SMSHandler{
 		
 		System.out.println(results.get("message"));
 	}
-	
-
 }

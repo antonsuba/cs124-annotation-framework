@@ -5,13 +5,11 @@ import framework.entity.Session;
 import framework.handlers.SessionHandler;
 import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
-import room.RoomCommandManager;
-
-import java.util.Arrays;
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import room.RoomCommandManager;
+
+import java.util.HashMap;
 
 @Component
 @SMSAnnotation(trigger = "COMMAND", argumentCount = -1)

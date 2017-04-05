@@ -1,10 +1,8 @@
 package app;
 
+import framework.repositories.SessionRepository;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import framework.entity.Session;
-import framework.repositories.SessionRepository;
 import solution.SMS;
 import solution.handlers.CommandHandler;
 import solution.handlers.GoHandler;
