@@ -16,6 +16,8 @@
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/config/applicationContext-jpa.xml</file>
           <file>file://$MODULE_DIR$/config/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/config/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/config/applicationContext-jpa.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -145,6 +147,15 @@
         <SOURCES>
           <root url="jar://$MODULE_DIR$/RoomCommandManagerUpdated.jar!/" />
         </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/config" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

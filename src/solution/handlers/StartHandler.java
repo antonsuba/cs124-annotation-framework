@@ -20,10 +20,7 @@ public class StartHandler implements SMSHandler{
 	
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
-		
 		Session session = sessionHandler.getSession();
-		//String name = session.getName();
-		//session = rep.getSession(name);
 
 		//Reset room and game state
 		session.setRoom("Room1");
@@ -34,6 +31,4 @@ public class StartHandler implements SMSHandler{
 		session.setGameState((Integer)results.get("status"));
 		System.out.println(results.get("message"));
 	}
-	
-
 }

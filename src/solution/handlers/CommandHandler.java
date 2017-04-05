@@ -5,13 +5,11 @@ import framework.entity.Session;
 import framework.handlers.SessionHandler;
 import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
-import room.RoomCommandManager;
-
-import java.util.Arrays;
-import java.util.HashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import room.RoomCommandManager;
+
+import java.util.HashMap;
 
 @Component
 @SMSAnnotation(trigger = "COMMAND", argumentCount = -1)
@@ -24,11 +22,9 @@ public class CommandHandler implements SMSHandler{
 		Session session = sessionHandler.getSession();
 		HashMap<String, Object> results;
 
-		String arguments = "";
-		for(int i = 0; i < args.length; i++){
-			arguments = arguments + args[i];
-		}
-	
+		String arguments = " ";
+		for (String arg : args) arguments += arg;
+
 		try{
 			results = rcm.processRoom(session.getRoom(), session.getGameState(), command + arguments);
 		}
