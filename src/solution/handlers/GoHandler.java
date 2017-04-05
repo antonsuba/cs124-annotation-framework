@@ -7,6 +7,7 @@ import framework.interfaces.SMSHandler;
 import room.RoomCommandManager;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 @SMSAnnotation(trigger = "GO", argumentCount = 1)
 public class GoHandler implements SMSHandler {
@@ -14,8 +15,10 @@ public class GoHandler implements SMSHandler {
     @Override
     public void process(String commands, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler){
         Session session = sessionHandler.getSession();
-        System.out.println(commands);
-        System.out.println(Arrays.toString(args));
-//        session.setRoom(args[0]);
+        
+        HashMap<String, Object> results = rcm.processRoom(args[0], session.getGameState(), "checkRoom");
+        session.setRoom(args[0]);
+		session.setGameState((Integer)results.get("status"));
+		System.out.println(results.get("message"));
     }
 }

@@ -16,23 +16,11 @@ import java.util.HashMap;
 public class StartHandler implements SMSHandler{
 	
 	@Autowired
-	SessionRepository rep;
-
+	public static SessionRepository rep;
 	
-//	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
-//		Session newSession = new Session();
-//		newSession.setGameState(0);
-//		newSession.setName("YO");
-//		newSession.setRoom("Room1");
-//		session = newSession;
-//		
-//		String name = session.getName();
-//		session = rep.getSession(name);
-//	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
-	//@PostConstruct
 	@Override
-//	public void process(String command, String[] args, RoomCommandManager rcm, Session session) {
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
+		
 		Session session = sessionHandler.getSession();
 		//String name = session.getName();
 		//session = rep.getSession(name);
@@ -40,7 +28,8 @@ public class StartHandler implements SMSHandler{
 		//Reset room and game state
 		session.setRoom("Room1");
 		session.setGameState(0);
-
+		rep.saveAndFlush(session);
+		
 		HashMap<String, Object> results = rcm.processRoom(session.getRoom(), session.getGameState(), "checkRoom");
 		session.setGameState((Integer)results.get("status"));
 		System.out.println(results.get("message"));
