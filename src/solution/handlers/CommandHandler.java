@@ -75,11 +75,5 @@ public class CommandHandler implements SMSHandler{
 			System.out.println("Error invalid command or arguments");
 			return;
 		}
-
-
-		session.setGameState((Integer)results.get("status"));
-		rep.saveAndFlush(session);
-		
-		System.out.println(results.get("message"));
 	}
 }

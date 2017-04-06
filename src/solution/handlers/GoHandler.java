@@ -41,6 +41,7 @@ public class GoHandler implements SMSHandler {
         		
         		
         		System.out.println(results.get("message"));
+        		sessionHandler.setInARoom(true);
         	}
         }
         catch (RuntimeException e){
@@ -48,16 +49,5 @@ public class GoHandler implements SMSHandler {
             return;
         }
 
-<<<<<<< HEAD
-=======
-        session.setRoom(args[0]);
-		session.setGameState((Integer)results.get("status"));
-		rep.saveAndFlush(session);
-		
-		
-		System.out.println(results.get("message"));
-
->>>>>>> refs/remotes/origin/master
-		sessionHandler.setInARoom(true);
     }
 }
