@@ -5,10 +5,9 @@ import framework.entity.Session;
 public class SessionHandler {
     private Session session;
 
-    private String registeredName = "";
-
     private boolean registered = false;
     private boolean started = false;
+    private boolean inARoom = false;
 
     public SessionHandler(){
         session = new Session();
@@ -38,11 +37,11 @@ public class SessionHandler {
         this.started = started;
     }
 
-    public String getRegisteredName() {
-        return registeredName;
+    public boolean isInARoom() {
+        return inARoom;
     }
 
-    public void setRegisteredName(String registeredName) {
-        this.registeredName = registeredName;
+    public void setInARoom(boolean inARoom) {
+        this.inARoom = inARoom;
     }
 }

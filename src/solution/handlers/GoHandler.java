@@ -21,6 +21,11 @@ public class GoHandler implements SMSHandler {
 	
     @Override
     public void process(String commands, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler){
+        if(!sessionHandler.isRegistered() || !sessionHandler.isStarted()){
+            System.out.println("Error. Please REGISTER then START a game first");
+            return;
+        }
+
         Session session = sessionHandler.getSession();
         
         HashMap<String, Object> results;
@@ -43,6 +48,7 @@ public class GoHandler implements SMSHandler {
             System.out.println("Error. Invalid Room");
             return;
         }
-        
+
+		sessionHandler.setInARoom(true);
     }
 }
