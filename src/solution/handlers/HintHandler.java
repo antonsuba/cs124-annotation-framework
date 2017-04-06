@@ -1,8 +1,5 @@
 package solution.handlers;
 
-import java.lang.reflect.Method;
-import java.util.List;
-
 import framework.annotations.SMSAnnotation;
 import framework.entity.Session;
 import framework.handlers.SessionHandler;
@@ -10,6 +7,9 @@ import framework.interfaces.SMSHandler;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
+
+import java.lang.reflect.Method;
+import java.util.List;
 
 @SMSAnnotation(trigger = "HINT")
 public class HintHandler implements SMSHandler{

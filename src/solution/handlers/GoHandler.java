@@ -5,12 +5,11 @@ import framework.entity.Session;
 import framework.handlers.SessionHandler;
 import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import room.RoomCommandManager;
 
 import java.util.HashMap;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 @Component
 @SMSAnnotation(trigger = "GO", argumentCount = 1)
@@ -49,6 +48,16 @@ public class GoHandler implements SMSHandler {
             return;
         }
 
+<<<<<<< HEAD
+=======
+        session.setRoom(args[0]);
+		session.setGameState((Integer)results.get("status"));
+		rep.saveAndFlush(session);
+		
+		
+		System.out.println(results.get("message"));
+
+>>>>>>> refs/remotes/origin/master
 		sessionHandler.setInARoom(true);
     }
 }
