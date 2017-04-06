@@ -24,7 +24,7 @@ public class Session {
     }
     
     public void setGameState(int gameState){
-		this.gameState += gameState;
+		this.gameState = gameState;
 	}
     
     
@@ -44,6 +44,8 @@ public class Session {
 		this.room = room;
 	}
     
-    
+    public void resetGameState(){
+    	this.gameState = 0;
+    }
     
 }

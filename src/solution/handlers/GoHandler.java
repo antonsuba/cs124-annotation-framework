@@ -24,19 +24,25 @@ public class GoHandler implements SMSHandler {
         Session session = sessionHandler.getSession();
         
         HashMap<String, Object> results;
+        
         try{
-            results = rcm.processRoom(args[0], session.getGameState(), "checkRoom");
+        	if(session.getRoom().equals(args[0])){
+        		System.out.println("You are currently in this room");
+        	}else{
+        		results = rcm.processRoom(args[0], session.getGameState(), "checkRoom");
+        		
+        		session.setRoom(args[0]);
+        		session.setGameState((Integer)results.get("status"));
+        		rep.saveAndFlush(session);
+        		
+        		
+        		System.out.println(results.get("message"));
+        	}
         }
         catch (RuntimeException e){
             System.out.println("Error. Invalid Room");
             return;
         }
-
-        session.setRoom(args[0]);
-		session.setGameState((Integer)results.get("status"));
-		rep.saveAndFlush(session);
-		
-		
-		System.out.println(results.get("message"));
+        
     }
 }

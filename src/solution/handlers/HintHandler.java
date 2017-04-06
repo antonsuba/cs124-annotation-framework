@@ -34,6 +34,7 @@ public class HintHandler implements SMSHandler{
 				for(Method m : ml){
 					System.out.println(" - " + m.getName());
 				}
+				System.out.println(" - GO Room#");
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
