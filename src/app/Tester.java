@@ -22,6 +22,6 @@ public class Tester {
     	CommandHandler.rep = sr;
     	GoHandler.rep = sr;
     	
-        SMS sms = new SMS();
+        SMS sms = new SMS(args[0]);
     }
 }

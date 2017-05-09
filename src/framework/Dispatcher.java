@@ -79,8 +79,6 @@ public class Dispatcher {
         if(smsHandler == null){
             smsHandler = smsMap.get("COMMAND");
         }
-//        smsHandler.process(components[0], args, rcm, session);
-
         smsHandler.process(components[0], args, rcm, sessionHandler);
     }
 
