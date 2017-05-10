@@ -25,6 +25,8 @@ public class StartHandler implements SMSHandler{
 			return;
 		}
 
+		sessionHandler.saveState();
+
 		Session session = sessionHandler.getSession();
 
 		//Reset room and game state

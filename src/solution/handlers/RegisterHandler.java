@@ -28,6 +28,7 @@ public class RegisterHandler implements SMSHandler{
 			System.out.println("You are currently in " + checkSession.getRoom());
 			sessionHandler.setStarted(true);
 			sessionHandler.setInARoom(true);
+
 		} else{
     		Session newSession = new Session();
     		newSession.setName(args[0]);
@@ -40,5 +41,6 @@ public class RegisterHandler implements SMSHandler{
     	}
 
     	sessionHandler.setRegistered(true);
+		sessionHandler.purgeStates();
     }
 }

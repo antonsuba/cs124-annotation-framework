@@ -4,10 +4,7 @@ import framework.repositories.SessionRepository;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import solution.SMS;
-import solution.handlers.CommandHandler;
-import solution.handlers.GoHandler;
-import solution.handlers.RegisterHandler;
-import solution.handlers.StartHandler;
+import solution.handlers.*;
 
 public class Tester {
 	
@@ -21,6 +18,7 @@ public class Tester {
     	StartHandler.rep = sr;
     	CommandHandler.rep = sr;
     	GoHandler.rep = sr;
+		UndoHandler.rep = sr;
     	
         SMS sms = new SMS(args[0]);
     }

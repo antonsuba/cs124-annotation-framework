@@ -47,5 +47,13 @@ public class Session {
     public void resetGameState(){
     	this.gameState = 0;
     }
-    
+
+    public SessionMemento saveState(){
+        return new SessionMemento(room, gameState);
+    }
+
+    public void restoreState(SessionMemento sessionMemento){
+        room = sessionMemento.getRoom();
+        gameState = sessionMemento.getGameState();
+    }
 }
