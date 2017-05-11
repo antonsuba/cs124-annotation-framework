@@ -7,7 +7,6 @@ import framework.interfaces.SMSHandler;
 import framework.repositories.SessionRepository;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import room.RoomCommandManager;
@@ -58,13 +57,14 @@ public class CommandHandler implements SMSHandler{
 				}
 				
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
 		try{
 			if(commandFound){
+				sessionHandler.saveState();
+
 				results = rcm.processRoom(session.getRoom(), session.getGameState(), command + arguments);
 				
 				session.setGameState((Integer)results.get("status"));
@@ -77,7 +77,6 @@ public class CommandHandler implements SMSHandler{
 		}
 		catch (RuntimeException e){
 			System.out.println("Error invalid command or arguments");
-			return;
 		}
 	}
 }

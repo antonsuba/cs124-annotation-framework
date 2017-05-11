@@ -4,6 +4,7 @@ import framework.entity.Session;
 
 public class SessionHandler {
     private Session session;
+    private MementoHandler mementoHandler;
 
     private boolean registered = false;
     private boolean started = false;
@@ -11,6 +12,7 @@ public class SessionHandler {
 
     public SessionHandler(){
         session = new Session();
+        mementoHandler = new MementoHandler();
     }
 
     public Session getSession() {
@@ -43,5 +45,21 @@ public class SessionHandler {
 
     public void setInARoom(boolean inARoom) {
         this.inARoom = inARoom;
+    }
+
+    public void saveState(){
+        mementoHandler.push(session.saveState());
+    }
+
+    public void restoreState(){
+        session.restoreState(mementoHandler.pop());
+    }
+
+    public void purgeStates(){
+        mementoHandler = new MementoHandler();
+    }
+
+    public boolean undoAvailable(){
+        return !mementoHandler.empty();
     }
 }
