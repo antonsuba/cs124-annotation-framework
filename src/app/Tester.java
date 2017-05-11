@@ -20,6 +20,6 @@ public class Tester {
     	GoHandler.rep = sr;
 		UndoHandler.rep = sr;
     	
-        SMS sms = new SMS(args[0]);
+        SMS sms = new SMS("COMMANDLINE");
     }
 }
