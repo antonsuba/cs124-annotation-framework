@@ -16,10 +16,10 @@ public class HintHandler implements SMSHandler{
 
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
-		if(!sessionHandler.isInARoom()){
-			System.out.println("Error. Please GO in a room first");
-			return;
-		}
+//		if(!sessionHandler.isInARoom()){
+//			System.out.println("Error. Please GO in a room first");
+//			return;
+//		}
 
 		System.out.println("Here is a list of things you can do: ");
 		System.out.println("(although some of these may only be called depending on your state)");

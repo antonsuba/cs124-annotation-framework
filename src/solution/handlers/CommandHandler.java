@@ -11,6 +11,8 @@ import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import room.RoomCommandManager;
+import solution.expressions.OrExpression;
+import solution.interfaces.Expression;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -25,7 +27,9 @@ public class CommandHandler implements SMSHandler{
 	
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
-		if(!sessionHandler.isRegistered() || !sessionHandler.isStarted()){
+		Expression registeredAndStarted = new OrExpression(!sessionHandler.isRegistered(),!sessionHandler.isStarted());
+		
+		if(registeredAndStarted.interpret()){
 			System.out.println("Error. Please use the REGISTER or START command first");
 			return;
 		}
