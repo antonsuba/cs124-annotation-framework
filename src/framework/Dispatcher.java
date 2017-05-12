@@ -8,6 +8,8 @@ import framework.interfaces.SMSHandler;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.scanner.ScanResult;
 import room.RoomCommandManager;
+import solution.expressions.NullExpression;
+import solution.interfaces.Expression;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -75,8 +77,10 @@ public class Dispatcher {
         }
 
         SMSHandler smsHandler = smsMap.get(components[0].toUpperCase());
-
-        if(smsHandler == null){
+        
+        Expression smsHandlerIsNull = new NullExpression(smsHandler);
+        
+        if(smsHandlerIsNull.interpret()){
             smsHandler = smsMap.get("COMMAND");
         }
         smsHandler.process(components[0], args, rcm, sessionHandler);

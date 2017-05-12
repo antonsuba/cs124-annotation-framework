@@ -22,9 +22,9 @@ public class GoHandler implements SMSHandler {
 	
     @Override
     public void process(String commands, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler){
-        Expression registeredAndStarted = new OrExpression(!sessionHandler.isRegistered(),!sessionHandler.isStarted());
+        Expression notRegisteredNorStarted = new OrExpression(!sessionHandler.isRegistered(),!sessionHandler.isStarted());
     	
-    	if(registeredAndStarted.interpret()){
+    	if(notRegisteredNorStarted.interpret()){
             System.out.println("Error. Please REGISTER then START a game first");
             return;
         }

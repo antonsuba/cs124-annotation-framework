@@ -26,9 +26,9 @@ public class CommandHandler implements SMSHandler{
 	
 	@Override
 	public void process(String command, String[] args, RoomCommandManager rcm, SessionHandler sessionHandler) {
-		Expression registeredAndStarted = new OrExpression(!sessionHandler.isRegistered(),!sessionHandler.isStarted());
+		Expression notRegisteredNorStarted = new OrExpression(!sessionHandler.isRegistered(),!sessionHandler.isStarted());
 		
-		if(registeredAndStarted.interpret()){
+		if(notRegisteredNorStarted.interpret()){
 			System.out.println("Error. Please use the REGISTER or START command first");
 			return;
 		}
